@@ -1,20 +1,3 @@
-{% extends 'index.html' %}
-{% load static %}
-
-{% block page-title %}
-<title>signin</title>
-{% endblock page-title %}
-
-<link rel="stylesheet" src="{% static 'css/login.css' %}"/>
-
-{% block navbar-active %}
-
-<li class="nav-item active">
-   <a href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i> Login</a>
-</li>
-{% endblock %}
-{% block content %}
-<style>
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .login-page {
@@ -115,15 +98,3 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
-<div class="login-page">
-  <div class="form">
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button>login</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
-    </form>
-  </div>
-</div>
-</style>
-{% endblock content %}
