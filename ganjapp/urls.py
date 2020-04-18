@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from ganjapp.views import index
 from products.views import shop_home
 from dispensaries.views import dispensaries
@@ -27,4 +27,5 @@ urlpatterns = [
     path('dispensaries/', dispensaries, name='dispensaries'),
     path('login/', login, name='login'),
     path('signup/', signup, name='signup'),
+    path('accounts', include('django.contrib.auth.urls'))
 ]
