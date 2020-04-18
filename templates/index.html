@@ -15,8 +15,28 @@
    <body>
 	<!-- Navbar -->
 	<!-- As a heading -->
-	<nav class="navbar navbar-light bg-light">
-	   <span class="navbar-brand mb-0 h1">ganjapp</span>
+	<nav class="navbar navbar-dark bg-dark navbar-expand-lg justify-content-between">
+	   <a class="navbar-brand mb-1 h1">ganjapp</a>
+	   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	   </button>
+
+	   <div class="collapse navbar-collapse" id="navbarText">
+		<ul class="navbar-nav mr-auto">
+		   <li class="nav-item active">
+			<a class="nav-link" href="#">home <span class="sr-only">(current)</span></a>
+			<li class="nav-item">
+			   <a class="nav-link" href="#">shop <span
+				  class="sr-only"></span>
+			   </a>
+			</li>
+		   </li>
+		</ul>
+	   </div>
+		   <form class="form-inline">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		   </form>
 	</nav>
 	{% block content %}
 

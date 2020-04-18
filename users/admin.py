@@ -4,6 +4,6 @@ from django.contrib import admin
 from users.models import Profile
 
 class ProfileAdmin(admin.ModelAdmin):
-    fields = ('first_name', 'last_name', 'birth_date', 'profile_type', )
+    fields = ('username', )
 
 admin.site.register(Profile, ProfileAdmin)
