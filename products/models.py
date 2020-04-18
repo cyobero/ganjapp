@@ -48,6 +48,8 @@ class Flower(models.Model):
 
 class PreRoll(models.Model):
     flower = models.OneToOneField(Flower, on_delete=models.CASCADE)
+    quantity = models.DecimalField(max_digits=4, decimal_places=2,
+                                   choices=FLOWER_QTY_CHOICES, default=0.0)
 
     def __unicode__(self):
         return self.flower.name

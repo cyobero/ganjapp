@@ -13,7 +13,7 @@ class FlowerAdmin(admin.ModelAdmin):
     fields = ('name', 'kind', 'thc', 'cbd', 'description', 'quantity')
 
 class PreRollAdmin(admin.ModelAdmin):
-    pass
+    fields = ('flower', 'quantity', )
 
 
 admin.site.register(Flower, FlowerAdmin)
