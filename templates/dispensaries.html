@@ -4,25 +4,38 @@
 {% block page-title %}
 <title>Dispensaries</title>
 {% endblock page-title %}
+<!-- Load an icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-{% block navbar %}
-<div class="collapse navbar-collapse" id="navbarText">
-   <ul class="navbar-nav mr-auto">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg justify-content-between">
+   <a class="navbar-brand mb-1 h1">ganjapp</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+   </button>
 
-	<li class="nav-item">
-	   <a class="nav-link" href="{% url 'index' %}">home <span class="sr-only"></span></a>
-	</li>
-	<li class="nav-item">
-	   <a class="nav-link" href="{% url 'shop_home' %}">shop <span
-				class="sr-only"></span>
-	   </a>
-	</li>
-	<li class="nav-item active">
-	   <a class="nav-link" href="#">dispensaries <span
-				class="sr-only">(current)</span></a>
-	</li>
 
-   </ul>
-</div>
+   {% block navbar %}
 
-{% endblock navbar %}
+   <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+   <div class="collapse navbar-collapse" id="navbarText">
+	<ul class="navbar-nav mr-auto">
+
+	   <li class="nav-item">
+		<a class="nav-link" href="{% url 'index' %}">home <span
+			class="sr-only"></span></a>
+
+		<li class="nav-item">
+		   <a class="nav-link" href="{% url 'shop_home' %}">shop <span
+				 class="sr-only"></span>
+		   </a>
+		</li>
+
+		<li class="nav-item active">
+		   <a class="nav-link" href="{% url 'dispensaries' %}">dispensaries <span
+				 class="sr-only">(current)</span></a>
+		</li>
+
+	   </li>
+	</ul>
+   </div>
+   {% endblock navbar %}
