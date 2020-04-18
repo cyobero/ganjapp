@@ -1,2 +1,2 @@
 # ganjapp
-cannabis delivery app
+A cannabis delivery app
