@@ -7,10 +7,10 @@ class CartridgeAdmin(admin.ModelAdmin):
     pass
 
 class EdibleAdmin(admin.ModelAdmin):
-    pass
+    fields = ('name', )
 
 class FlowerAdmin(admin.ModelAdmin):
-    pass
+    fields = ('name', 'kind', 'thc', 'cbd', 'description', 'quantity')
 
 class PreRollAdmin(admin.ModelAdmin):
     pass
