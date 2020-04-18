@@ -1,10 +1,29 @@
-{% extends 'index' %}
+{% extends 'index.html' %}
 {% load static %}
 <!doctype html>
 {% block page-content %}
 <title>shop - ganjapp</title>
-{% block endblock %}
+{% endblock page-content %}
 
 {% block custom-css %}
 <link rel="stylesheet" src="{% static 'css/shop-home.css' %}"/>
 {% endblock custom-css %}
+
+{% block navbar %}
+<div class="collapse navbar-collapse" id="navbarText">
+   <ul class="navbar-nav mr-auto">
+	<li class="nav-item">
+	   <a class="nav-link" href="{% url 'index' %}">home <span class="sr-only">(current)</span></a>
+	   <li class="nav-item active">
+		<a class="nav-link" href="{% url 'shop_home' %}">shop <span
+			    class="sr-only"></span>
+		</a>
+	   </li>
+	</li>
+   </ul>
+</div>
+{% endblock navbar %}
+
+{% block content %}
+
+{% endblock content %}
