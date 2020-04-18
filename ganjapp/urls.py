@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from ganjapp.views import index
 from products.views import shop_home
+from dispensaries.views import dispensaries
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('shop/', shop_home, name='shop_home'),
+    path('dispensaries/', dispensaries, name='dispensaries'), 
 ]
