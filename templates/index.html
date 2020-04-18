@@ -25,16 +25,24 @@
 	   {% block navbar %}
 	   <div class="collapse navbar-collapse" id="navbarText">
 		<ul class="navbar-nav mr-auto">
+
 		   <li class="nav-item active">
 			<a class="nav-link" href="#">home <span class="sr-only">(current)</span></a>
+
 			<li class="nav-item">
 			   <a class="nav-link" href="{% url 'shop_home' %}">shop <span
 				  class="sr-only"></span>
 			   </a>
 			</li>
+
+			<li class="nav-item">
+			   <a class="nav-link" href="#">dispensaries </a> <span
+				  class="sr-only"></span>
+			</li>
+
 		   </li>
 		</ul>
-	   </div>
+	   </div> 
 	   {% endblock navbar %}
 		   <form class="form-inline">
 			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -42,7 +50,13 @@
 		   </form>
 	</nav>
 	{% block content %}
-
+	<div class="container">
+	   <div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+		   <h1 class="page-header">ganjapp</h1>
+		</div>
+		<div class="col-md-3"></div>
 	{% endblock %}
 
 	<!-- Default javascript -->
