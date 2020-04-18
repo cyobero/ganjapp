@@ -18,7 +18,7 @@ from django.urls import path
 from ganjapp.views import index
 from products.views import shop_home
 from dispensaries.views import dispensaries
-from users.views import login
+from users.views import login, signup
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +26,5 @@ urlpatterns = [
     path('shop/', shop_home, name='shop_home'),
     path('dispensaries/', dispensaries, name='dispensaries'),
     path('login/', login, name='login'),
+    path('signup/', signup, name='signup'),
 ]

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page-title %}
-<title>signin</title>
+<title>login</title>
 {% endblock page-title %}
 
 <link rel="stylesheet" src="{% static 'css/login.css' %}"/>
@@ -115,15 +115,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
+</style>
+
 <div class="login-page">
   <div class="form">
+    <form class="register-form">
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+	<p class="message">Already registered? <a href="{% url 'login' %}">Log In</a></p>
+    </form>
     <form class="login-form">
       <input type="text" placeholder="username"/>
       <input type="password" placeholder="password"/>
       <button>login</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
+	<p class="message">Not registered? <a href="{% url 'signup' %}">Create an account</a></p>
     </form>
   </div>
 </div>
-</style>
 {% endblock content %}
