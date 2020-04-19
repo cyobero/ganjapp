@@ -14,11 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
+from django.http import HttpResponse
 from django.urls import path, include
 from ganjapp.views import index
 from products.views import shop_home
 from dispensaries.views import dispensaries
-from users.views import login
+from users.views import login_view
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
@@ -26,5 +28,5 @@ urlpatterns = [
     path('', index, name='index'),
     path('shop/', shop_home, name='shop_home'),
     path('dispensaries/', dispensaries, name='dispensaries'),
-    path('login/', login, name='login'),
+    path('login/', login_view, name='login'),
 ]

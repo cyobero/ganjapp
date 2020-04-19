@@ -61,10 +61,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	   </button>
 
 
-	   <a href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i> Login</a>
+	{% if user.is_authenticated %}
+	   <!--<a href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i>
+	 Login</a>-->
 	   <div class="collapse navbar-collapse" id="navbarText">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
+	{% endif %}
 			   <a class="nav-link" href="{% url 'shop_home' %}"><i
 				  class="fa fas fa-shopping-cart"></i> shop <span
 				  class="sr-only"></span>
@@ -92,6 +95,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	   <div class="row">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
+
+		   {% if request.user.is_authenticated %}
+		   <h3 class="display-3">Hello, {{ request.user.username }}</h3>
+
+		   {% endif %}
+
+
 		</div>
 		<div class="col-md-3"></div>
 		{% endblock %}
