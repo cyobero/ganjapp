@@ -54,6 +54,6 @@ def logout_view(request):
 @login_required
 def profile_view(request, username):
     if request.user.is_authenticated:
-        user = request.user
-        return render(request, 'profile.html', {'user': user })
+        profile = Profile.objects.get(username=username)
+        return render(request, 'profile.html', {'profile': profile })
     return render(request, 'profile.html')

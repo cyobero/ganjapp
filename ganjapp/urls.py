@@ -29,5 +29,5 @@ urlpatterns = [
     path('shop/', shop_home, name='shop_home'),
     path('dispensaries/', dispensaries, name='dispensaries'),
     path('login/', login_view, name='login'),
-    path('profile/<username>', profile_view, name='profile'),
+    path('<username>/', profile_view, name='profile'),
 ]
