@@ -9,8 +9,6 @@ class Profile(models.Model):
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    username = models.CharField(max_length=50, blank=False, null=False,
-                                default='stoner_unknown')
     bio = models.TextField(max_length=300, blank=True, null=True)
     birth_date = models.DateField(null=True, blank=True)
     profile_type = models.CharField(max_length=1, choices=PROFILE_TYPE_CHOICES,
