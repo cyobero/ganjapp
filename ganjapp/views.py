@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from users.models import Profile
+from django.contrib.auth.decorators import login_required
 
 def index(request):
-    if request.user.is_authenticated:
-        user = request.user
-        return render(request, 'index.html', {'user': user })
+    # redirect to login page if user is not
+    # logged in.
     return render(request, 'index.html')
 
 
