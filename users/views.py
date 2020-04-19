@@ -33,12 +33,18 @@ def login_view(request):
                 if user.is_active:
                     login(request, user)
                     return redirect(reverse('index'))
-                else:
-                    return HttpResponse("The account is no longer active.")
             else:
                 form = LoginForm(request.POST)
                 return render(request, 'login.html', {'form': form})
     else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
-    return render(request, 'login.html', {'form': form} )
+    return render(request, 'login.html', {'form': form})
+
+
+@login_required
+def logout_view(request):
+    logout(request)
+
+    # take user back to the login page
+    return HttpResponseRedirect(reverse('login'))

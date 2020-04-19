@@ -7,16 +7,18 @@
 	{% endblock %}
 
 	{% block custom-css %}
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	{% endblock custom-css %}
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- Default stylesheet -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+	<!-- Fontawesome -->
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 	<style>
 body {font-family: Arial, Helvetica, sans-serif;}
 
@@ -42,12 +44,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
    background-color: #4CAF50;
 }
 
-  @media screen and (max-width: 500px) {
-     .navbar a {
-	  float: none;
-	  display: block;
-     }
-  }
+	     @media screen and (max-width: 500px) {
+		  .navbar a {
+		     float: none;
+		     display: block;
+		  }
+	     }
 	</style>
    </head>
    <body>
@@ -61,43 +63,47 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	   </button>
 
 
-	{% if user.is_authenticated %}
-	   <!--<a href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i>
-	 Login</a>-->
-	   <div class="collapse navbar-collapse" id="navbarText">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item">
-	{% endif %}
-			   <a class="nav-link" href="{% url 'shop_home' %}"><i
-				  class="fa fas fa-shopping-cart"></i> shop <span
-				  class="sr-only"></span>
-			   </a>
-			</li> 			<li class="nav-item">
-			   <a class="nav-link" href="{% url 'dispensaries' %}"><i
-				  class="fa fa-w fas fa-joint"></i>dispensaries <span
-	class="sr-only"></span></a>
+	   {% if user.is_authenticated %}
+    <div class="collapse navbar-collapse" id="navbarText">
+	 <ul class="navbar-nav mr-auto">
 
-			</li>
+	    <li class="nav-item">
+		 <a class="nav-link" href="{% url 'logout' %}"><i class="fa
+			 fa-sign-out"></i>
 
-		   </li>
+		    <li class="nav-item">
+			 <a class="nav-link" href="{% url 'shop_home' %}"><i
+				class="fa fas fa-shopping-cart"></i> shop <span
+    class="sr-only"></span>
+			 </a>
+		    </li>				<li class="nav-item">
+			 <a class="nav-link" href="{% url 'dispensaries' %}"><i
+				class="fa fa-w fas fa-joint"></i>dispensaries <span
+    class="sr-only"></span></a>
 
-		</ul>
-	   </div>
+		    </li>
 
+	    </li>
 
-	   <form class="form-inline">
-		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	   </form>
+	 </ul>
+    </div>
+    <form class="form-inline">
+	 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+	 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
 	</nav>
+
+	{% endif %}
+
+
 	{% block content %}
 	<div class="container">
 	   <div class="row">
-		<div class="col-md-3"></div>
+		<div class="col-md-2"></div>
 		<div class="col-md-6">
-
+		   <br>
 		   {% if request.user.is_authenticated %}
-		   <h3 class="display-3">Hello, {{ request.user.username }}</h3>
+		   <h4 class="display-3">Hello, {{ request.user.username }}</h3>
 
 		   {% endif %}
 
@@ -113,8 +119,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 
 
- <script type="text/javascript">
-$('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});
+		<script type="text/javascript">
+		   $('.message a').click(function(){
+			$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+		   });
 
