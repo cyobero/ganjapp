@@ -8,8 +8,4 @@ def index(request):
         user = request.user
         login(request, user)
         return render(request, 'index.html')
-    return redirect(reverse('login'))
-
-
-def contact(request):
-    return render(request, 'contact.html')
+    return redirect(reverse('signup'))

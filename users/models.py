@@ -15,10 +15,15 @@ class Profile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     profile_type = models.CharField(max_length=1, choices=PROFILE_TYPE_CHOICES,
                                     default='B')
+    password2 = models.CharField(max_length=128, blank=True, null=True,
+                                        default='')
 
 
     def __str__(self):
         return self.username
+
+    def password_confirmed(self):
+        return self.user.password == self.password2
 
     class Meta:
         verbose_name = ("Profile")

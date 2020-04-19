@@ -52,11 +52,11 @@
 			</div>
 
 			<!-- Handle form error messages -->
-			{% if errors %}
+			{% if form.email.errors %}
 			<ol>
-			   {% for error in errors %}
+			   {% for error in form.email.errors %}
 
-			   <p><strong><font color="red">{{ error }}</font></strong></p>
+			   <p><strong><font color="red">{{ error|escape }}</font></strong></p>
 			{% endfor %}
 			{% endif %}
 			<div class="text-center p-t-45 p-b-4">
