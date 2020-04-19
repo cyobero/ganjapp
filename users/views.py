@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from users.forms import LoginForm, SignupForm
+from users.models import Profile
 
 from users.forms import LoginForm
 # Create your views here.
@@ -48,3 +49,11 @@ def logout_view(request):
 
     # take user back to the login page
     return HttpResponseRedirect(reverse('login'))
+
+
+@login_required
+def profile_view(request, username):
+    if request.user.is_authenticated:
+        user = Profile.objects.filter(username=username)
+        return render(request, 'profile.html', {'user': user})
+    return render(request, 'profile.html')
