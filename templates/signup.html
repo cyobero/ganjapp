@@ -1,2 +1,84 @@
 {% extends 'login.html' %}
 {% load static %}
+{% block page-title %}
+<title>Sign Up!</title>
+{% endblock page-title %}
+{% block content %}
+<div class="limiter">
+   <div class="container-login100">
+	<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+
+	   {% if next %}
+	   {% if user.is_authenticated %}
+	   <p>Your account does not have access to this page. To
+		proceed, please login with an account that has
+		access.</p>
+	   {% else %}
+	   <p>Please login to see this page. </p>
+	   {% endif %}
+	   {% endif %}
+	   <form class="login100-form validate-form" method="POST" action="{% url 'login' %}">{% csrf_token %}
+		<span class="login100-form-title p-b-33">
+		   Sign Up
+		</span>
+
+		<div class="wrap-input100 validate-input"
+	 data-validate="Username is required. You can always change
+	 later.">
+		   <input class="input100" type="text"
+				     name="email" placeholder="Username">{{ form.username.as_p }}</input>
+		   <span class="focus-input100-1"></span>
+		   <span class="focus-input100-2"></span>
+		</div>
+
+		<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+		   <input class="input100" type="text"
+				     name="email" placeholder="Email">{{ form.email.as_p }}</input>
+		   <span class="focus-input100-1"></span>
+		   <span class="focus-input100-2"></span>
+		</div>
+
+		<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+		   <input class="input100" type="text"
+				     name="password" placeholder="Password">{{ form.password.as_p }}</input>
+		   <span class="focus-input100-1"></span>
+		   <span class="focus-input100-2"></span>
+		</div>
+
+		<div class="container-login100-form-btn m-t-20">
+		   <button type="submit" class="login100-form-btn">
+			Sign in
+		   </button>
+		</div>
+
+		<!-- Handle form error messages -->
+		{% if errors %}
+		<ol>
+		   {% for error in errors %}
+
+		   <p><strong><font color="red">{{ error }}</font></strong></p>
+		   {% endfor %}
+		   {% endif %}
+		   <div class="text-center p-t-45 p-b-4">
+		   </div>
+
+		   <div class="text-center">
+			<span class="txt1">
+			   Already have an account?
+			</span>
+
+			<a href="{% url 'login' %}" class="txt2 hov1">
+			   Login
+			</a>
+		   </div>
+	   </form>
+	</div>
+   </div>
+</div>
+
+
+
+<!--===============================================================================================-->
+<script src="{% static 'js/main.js' %}"></script>
+
+{% endblock content %}
