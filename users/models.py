@@ -15,6 +15,7 @@ class Profile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     profile_type = models.CharField(max_length=1, choices=PROFILE_TYPE_CHOICES,
                                     default='B')
+    img = models.ImageField(blank=True, null=True, upload_to="media/images/")
 
 
     def __str__(self):
