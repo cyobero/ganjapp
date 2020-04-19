@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
@@ -54,6 +54,6 @@ def logout_view(request):
 @login_required
 def profile_view(request, username):
     if request.user.is_authenticated:
-        user = Profile.objects.filter(username=username)
-        return render(request, 'profile.html', {'user': user})
+        user = request.user
+        return render(request, 'profile.html', {'user': user })
     return render(request, 'profile.html')
