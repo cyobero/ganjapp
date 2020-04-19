@@ -8,6 +8,9 @@ from users.forms import LoginForm, SignupForm
 from users.forms import LoginForm
 # Create your views here.
 def login_view(request):
+    errors = []
+    if request.user.is_authenticated:
+        return redirect(reverse('profile'))
     if request.method == 'POST':
         form = LoginForm(request.POST)
 
@@ -24,18 +27,21 @@ def login_view(request):
             if len(query_user) > 0:
                 user = query_user[0]
             else:
+                errors.append("Invalid email address provided. Please try again.")
                 form = LoginForm(request.POST)
-                return render(request, 'login.html', {'form': form})
+                return render(request, 'login.html', {'form': form, 'errors': errors})
             user = authenticate(username=user.username, password=password)
 
             if user is not None:
                 # verify if user is still active
                 if user.is_active:
                     login(request, user)
-                    return redirect(reverse('index'))
+                    return redirect(user)
             else:
+                errors.append("Whoops. Femmeputer does not femmepute.")
                 form = LoginForm(request.POST)
-                return render(request, 'login.html', {'form': form})
+                return render(request, 'login.html', {'form': form, 'errors':
+                                                      errors})
     else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
