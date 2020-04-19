@@ -1,9 +1,11 @@
+from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from users.forms import LoginForm, SignupForm
+from users.models import Profile
 
 from users.forms import LoginForm
 # Create your views here.
@@ -13,8 +15,7 @@ def login_view(request):
         form = LoginForm(request.POST)
 
         # first, validate form
-        if form.is_valid():
-            form = form.clean()
+        if form.is_valid:
             email = form['email']
             password = form['password']
 
@@ -62,33 +63,36 @@ def signup_view(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
 
-        # Form validation
+        # validate form
         if form.is_valid:
-            form = form.clean()
+            # Extract user information for `Profile` and `User` model
             username = form['username']
             email = form['email']
             password = form['password']
-
-            # Create `User` and `Profile` objects that automatically saves to
-            # the database once instantiated. Redirect user to home page if
-            # registration is successful. Return error message if unsuccessful.
-            try:
-                user = User.objects.create_user(
-                    username=username,
-                    email=email,
-                    password=password,
-                )
-                # Create `Profile` model
-                Profile(user_id=user.id).save()
-                user = authenticate(username=username, password=password)
-                login(request, user)
-
-                return redirect(reverse('profile'))
-            except IntegrityError:
-                errors.append("The email address provided has already been registered.")
+            password2 = request.POST['password2']
+            # verify password
+            if password != password2:
                 form = SignupForm(request.POST)
-
-                return render(request, 'signup.html', {'form': form, 'errors': errors})
+                errors.append("Passwords do not match.")
+                return render(request, 'signup.html', {'form': form})
+            else:
+                # Create `User` and `Profile` objects that automatically saves
+                # to database once instanciated.
+                try:
+                    user = User.objects.create_user(
+                        email=email,
+                        username=username,
+                        password=password,
+                    )
+                    # Create associated `Profile` model
+                    Profile(user=user).save()
+                    user = authenticate(username=username, password=password)
+                    login(request, user)
+                    return redirect(reverse('index'))
+                except IntegrityError:
+                    errors.append("The email address provided has already been registered.")
+                    form = SignupForm(request.POST)
+                    return render(request, 'signup.html', {'form': form, 'errors': errors})
     else:
         form = SignupForm()
         return render(request, 'signup.html', {'form': form})
