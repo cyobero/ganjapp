@@ -26,7 +26,8 @@
 		   <p>Please login to see this page. </p>
 		   {% endif %}
 		   {% endif %}
-		   <form class="login100-form validate-form" method="POST" action="{% url 'login' %}">{% csrf_token %}
+		   <form class="login100-form validate-form" method="POST"
+		   action="#">{% csrf_token %}
 			<span class="login100-form-title p-b-33">
 			   Account Login
 			</span>
@@ -52,9 +53,9 @@
 			</div>
 
 			<!-- Handle form error messages -->
-			{% if form.email.errors %}
+			{% if errors %}
 			<ol>
-			   {% for error in form.email.errors %}
+			   {% for error in errors %}
 
 			   <p><strong><font color="red">{{ error|escape }}</font></strong></p>
 			{% endfor %}

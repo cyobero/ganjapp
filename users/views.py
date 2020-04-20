@@ -28,7 +28,8 @@ def login_view(request):
             else:
                 errors.append("Invalid email address provided. Please try again.")
                 form = LoginForm(request.POST)
-                return render(request, 'login.html', {'form': form})
+                return render(request, 'login.html', {'form': form, 'errors':
+                                                      errors})
             user = authenticate(username=user.username, password=password)
 
             if user is not None:
@@ -39,11 +40,12 @@ def login_view(request):
             else:
                 errors.append("Whoops. Femmeputer does not femmepute.")
                 form = LoginForm(request.POST)
-                return render(request, 'login.html', {'form': form})
+                return render(request, 'login.html', {'form': form, 'errors':
+                                                      errors})
     else:
         form = LoginForm()
-        return render(request, 'login.html', {'form': form})
-    return render(request, 'login.html', {'form': form})
+        return render(request, 'login.html', {'form': form, 'errors': errors})
+    return render(request, 'login.html', {'form': form, 'errors': errors})
 
 
 @login_required
