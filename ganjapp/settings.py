@@ -81,8 +81,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ganjapp_db',
-        'USER': 'homer',
-        'PASSWORD': 'simpson',
+        'USER': 'root',
+        'PASSWORD': os.environ['MYSQL_PASSWORD'],
         'HOST': 'localhost',
         'PORT': 3306,
     }
